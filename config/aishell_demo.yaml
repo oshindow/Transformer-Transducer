@@ -1,0 +1,64 @@
+units_type: character
+feature_source: kaldi
+feature_type: fbank
+data:
+    name: aishell
+    vocab: aishell_demo_char_table.txt
+    left_context_width: 3
+    right_context_width: 0
+    frame_rate: 30
+    apply_cmvn: False
+    max_input_length: 1000
+    max_target_length: 100
+    batch_size: 1
+    short_first: True
+    shuffle: False
+    train: /home/oshindo/kaldi/egs/thchs30/s5/demo/train
+    dev: /home/oshindo/kaldi/egs/thchs30/s5/demo/dev
+    test: /home/oshindo/kaldi/egs/thchs30/s5/demo/test
+model:
+    type: transducer
+    enc:
+        type: attention
+        hidden_size:
+        output_size:
+        d_inner: 320
+        n_head: 8
+        d_model: 160
+        d_head: 20
+        n_layer: 2
+    dec:
+        type: attention
+        hidden_size:
+        output_size:
+        d_inner: 320
+        n_head: 5
+        d_model: 115
+        d_head: 23
+        n_layer: 1
+    joint:
+        input_size: 275
+        inner_size: 320
+    vocab_size: 115
+    share_weight: False
+    feature_dim:
+    dropout: 0.1
+training:
+    load_model: False
+    load_encoder: False
+    load_decoder: False
+    eval_or_not: True
+    seed: 2020
+    num_gpu: 1
+    epochs: 20
+    max_grad_norm: 200
+    visualization: True
+    show_interval: 10
+    save_model: 4enc_1dec_512joint
+optim:
+    type: sgd
+    lr: 0.0001
+    momentum: 0.9
+    decay_ratio: 0.5
+    weight_decay: 0
+    begin_to_adjust_lr: 10

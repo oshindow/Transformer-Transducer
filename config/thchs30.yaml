@@ -1,0 +1,74 @@
+units_type: character
+feature_source: kaldi
+feature_type: fbank
+data:
+    name: thchs30
+    vocab: /home/wxt/transformer-transducer/all_char_table.txt
+    left_context_width: 7
+    right_context_width: 0
+    frame_rate: 30
+    apply_cmvn: False
+    max_input_length: 520
+    max_target_length: 47
+    # max_input_length: 521
+    # max_target_length: 94
+    batch_size: 4
+    short_first: True
+    shuffle: False
+    train: /home/wxt/kaldi/egs/thchs30/s5/data/fbank/train
+    dev: /home/wxt/kaldi/egs/thchs30/s5/data/fbank/dev
+    test: /home/wxt/kaldi/egs/thchs30/s5/data/fbank/test
+model:
+    type: transducer
+    enc:
+        type: attention
+        hidden_size:
+        output_size:
+        d_inner: 320
+        n_head: 8
+        d_model: 320
+        d_head: 40
+        n_layer: 1
+        n_layer_1: 1
+        n_layer_2: 1
+        n_layer_3: 2
+        etype: conv-transformer
+        # etype: transformer
+        # mode: lstm
+    dec:
+        type: attention
+        hidden_size:
+        output_size:
+        d_inner: 320
+        n_head: 8
+        d_model: 320
+        d_head: 40
+        d_joint: 640
+        n_layer: 4
+    beam_size: 1
+    vocab_size: 2884
+    share_weight: False
+    feature_dim:
+    dropout: 0.1
+    backend: c++
+
+training:
+    # load_model: /home/wxt/transformer-transducer/egs/timit/exp/test/test.epoch0.ckpt
+    load_model: False
+    load_encoder: False
+    load_decoder: False
+    eval_or_not: False
+    seed: 2019
+    num_gpu: 0
+    epochs: 20
+    max_grad_norm: 200
+    visualization: True
+    show_interval: 10
+    save_model: thchs30_test
+optim:
+    type: RMS
+    lr: 0.0001
+    momentum: 0.8
+    decay_ratio: 0.5
+    weight_decay: 0
+    begin_to_adjust_lr: 10

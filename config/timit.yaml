@@ -1,0 +1,88 @@
+units_type: phones
+feature_source: kaldi
+feature_type: fbank
+ngpu: 1
+grad_clip: 5
+accum-grad: 2
+num_save_attention: 3
+report_interval_iters: 10
+model_module: "tt.model:Transducer"
+minibatch: 0 # 1 for debug. 0 for all batches
+transformer_warmup_steps: 4000
+d_model: 512
+
+data:
+    name: timit
+    vocab: /home/wxt/espnet/egs/timit/asr1/data/lang_1char/train_nodev_units.txt
+    left_context_width: 0
+    right_context_width: 0
+    frame_rate: 10
+    apply_cmvn: False
+    max_input_length: 800
+    max_target_length: 150
+    batch_size: 4
+    encoding: True
+    short_first: False
+    shuffle: True
+    text_flag: text
+    train: /home/wxt/kaldi/egs/timit/s5/data/train
+    dev: /home/wxt/kaldi/egs/timit/s5/data/dev
+    test: /home/wxt/kaldi/egs/timit/s5/data/test
+    train_json: ./data/timit/train/deltafalse/data.json
+    valid_json: ./data/timit/dev/deltafalse/data.json
+
+model:
+    type: transducer
+    enc:
+        type: attention
+        hidden_size:
+        output_size:
+        d_inner: 512
+        n_head: 8
+        d_model: 256
+        d_head:
+        n_layer: 2
+        n_layer_1: 1
+        n_layer_2: 1
+        n_layer_3: 2
+        # etype: conv-transformer
+        # etype: hs-conv-transformer
+        etype: channel-transformer
+        # etype: transformer
+        # mode: lstm
+    dec:
+        type: attention
+        hidden_size:
+        output_size:
+        d_inner: 512
+        n_head: 8
+        d_model: 256
+        d_head: 64
+        d_joint: 256
+        n_layer: 2
+    beam_size: 1
+    vocab_size:
+    share_weight: False
+    feature_dim: 80
+    dropout: 0.1
+    backend: c++
+
+training:
+    # load_model: /home/wxt/transformer-transducer/egs/timit/exp/test/test.epoch0.ckpt
+    load_model: False
+    load_encoder: False
+    load_decoder: False
+    eval_or_not: False
+    seed: 2019
+    epochs: 20
+    max_grad_norm: 200
+    visualization: True
+    show_interval: 10
+    save_model: test
+optim:
+    type: noam
+    lr: 1.0
+    momentum: 0.8
+    decay_ratio: 0.5
+    weight_decay: 0
+    begin_to_adjust_lr: 10

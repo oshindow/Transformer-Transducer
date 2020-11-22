@@ -1,0 +1,65 @@
+units_type: character
+feature_source: kaldi
+feature_type: fbank
+data:
+    name: aishell
+    vocab: /home/oshindo/rnn-transducer/aishell_label/aishell_pinyin_table.txt
+    left_context_width: 19
+    right_context_width: 0
+    frame_rate: 30
+    apply_cmvn: False
+    max_input_length: 500
+    max_target_length: 50
+    batch_size: 4
+    short_first: True
+    shuffle: False
+    train: /home/oshindo/kaldi/egs/aishell/s5/data/train
+    dev: /home/oshindo/kaldi/egs/aishell/s5/data/dev
+    test: /home/oshindo/kaldi/egs/aishell/s5/data/test
+model:
+    type: transducer
+    enc:
+        type: attention
+        hidden_size:
+        output_size:
+        d_inner: 640
+        n_head: 16
+        d_model: 1600
+        d_head: 100
+        n_layer: 1
+    dec:
+        type: attention
+        hidden_size:
+        output_size:
+        d_inner: 640
+        n_head: 16
+        d_model: 320
+        d_head: 20
+        n_layer: 3
+    joint:
+        input_size: 1920
+        inner_size: 640
+    vocab_size: 1199
+    share_weight: False
+    feature_dim:
+    dropout: 0.1
+training:
+    load_model: False
+    load_encoder: False
+    load_decoder: False
+    eval_or_not: True
+    seed: 2020
+    num_gpu: 1
+    epochs: 60
+    max_grad_norm: 200
+    visualization: True
+    show_interval: 10
+    save_model: adapt
+optim:
+    type: sgd
+    lr: 0.0001
+    momentum: 0.9
+    decay_ratio: 0.5
+    weight_decay: 0
+    begin_to_adjust_lr: 10
+
