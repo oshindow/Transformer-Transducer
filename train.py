@@ -1,21 +1,22 @@
 import os
-import shutil
+import test
 import yaml
+import json
 import time
 import torch
-import torch.nn as nn
-import torch.utils.data
+import shutil
 import numpy as np
-import json
+import torch.nn as nn
 import configargparse
+import torch.utils.data
+
 from tt.optim import Optimizer
-from tt.utils import AttrDict, init_logger, count_parameters, save_model, computer_cer
+from tt.net_utils import pad_list
 from tt.batchfy import make_batchset
 from tt.io_utils import LoadInputsAndTargets
-from tt.chainer_dataset import ChainerDataLoader
 from tt.chainer_dataset import TransformDataset
-from tt.net_utils import pad_list
-import test
+from tt.chainer_dataset import ChainerDataLoader
+from tt.utils import AttrDict, init_logger, count_parameters, save_model, computer_cer
 
 
 def get_parser(parser=None, required=False):
@@ -32,7 +33,8 @@ def get_parser(parser=None, required=False):
 
 def _recursive_to(xs, device):
     if torch.is_tensor(xs):
-        return xs.to(device)
+        xs = xs.to(device)
+        return xs
     if isinstance(xs, tuple):
         return tuple(_recursive_to(x, device) for x in xs)
     return xs
@@ -236,7 +238,7 @@ def main():
 
     from tt.model import Transducer
     model = Transducer(idim, odim, args)
-    if config.ngpu != 0:
+    if config.ngpu > 0:
         model = model.cuda()
 
     # write model config
