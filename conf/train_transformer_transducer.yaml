@@ -1,0 +1,90 @@
+# minibatch related
+batch-size: 4
+
+
+# optimization related
+sortagrad: 0
+opt: adadelta
+epochs: 20
+patience: 0
+accum-grad: 1
+grad-clip: 5.0
+#n-iter-process: 4
+# transformer related
+
+# network architecture
+## encoder related
+etype: transformer
+transformer-enc-input-layer: linear
+#enc-block-arch:
+#        - type: conformer
+#          d_hidden: 512
+#          d_ff: 2048
+#          heads: 4
+#          macaron_style: True
+#          use_conv_mod: True
+#          conv_mod_kernel: 15
+#          dropout-rate: 0.4
+#          pos-dropout-rate: 0.4
+#          att-dropout-rate: 0.4
+enc-block-repeat: 8
+attype: transformer
+#transformer-enc-positional-encoding-type: rel_pos
+#transformer-enc-self-attn-type: rel_self_attn
+enc-block-arch:
+        - type: transformer
+          d_hidden: 320
+          d_ff: 1024
+          heads: 8
+          att-dropout-rate: 0.4
+
+#channel-block-arch:
+#        - type: transformer
+#          d_hidden: 32
+#          d_ff: 1024
+#          heads: 4
+#          att-dropout-rate: 0.1
+
+#enc1-block-arch:
+#        - type: transformer
+#          d_hidden: 384
+#          d_ff: 1536
+#          heads: 6
+#          att-dropout-rate: 0.4
+#enc2-block-arch:
+#        - type: transformer
+#          d_hidden: 512
+#          d_ff: 2048
+#          heads: 8
+#          att-dropout-rate: 0.4
+#enc3-block-arch:
+#        - type: transformer
+#          d_hidden: 512
+#          d_ff: 1024
+#          heads: 8
+#          att-dropout-rate: 0.4
+#enc-block-repeat: 8
+## decoder related
+dtype: lstm
+dlayers: 1
+dec-embed-dim: 320
+dunits: 320
+dropout-rate-decoder: 0.1
+dropout-rate-embed-decoder: 0.1
+#dtype: transformer
+#transformer-dec-input-layer: embed
+#dec-block-arch:
+#        - type: transformer
+#          d_hidden: 512
+#          d_ff: 1024
+#          heads: 4
+#          dropout-rate: 0.1
+#          pos-dropout-rate: 0.1
+#          att-dropout-rate: 0.1
+#dec-block-repeat: 2
+## joint network related
+joint-dim: 320
+
+# transducer related
+rnnt-mode: 'rnnt' # switch to 'rnnt-att' to use transducer with attention
+model-module: "tt.e2e_transducer:E2E"

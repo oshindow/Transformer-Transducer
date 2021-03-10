@@ -1,0 +1,35 @@
+#minibatch related
+batch-size: 4
+
+# optimization related
+sortagrad: 0
+opt: adadelta
+epochs: 40
+n-iter-processes: 4
+
+# network architecture
+## encoder related
+etype: lstm
+elayers: 4
+eunits: 320
+eprojs: 320
+right-mask: 0
+subsample: 1
+dropout-rate: 0.1
+
+## decoder related
+dec_type: lstm
+dlayers: 1
+dec-embed-dim: 300
+dunits: 300
+dropout-rate-decoder: 0.1
+dropout-rate-embed-decoder: 0.1
+## attention related
+atype: location
+adim: 320
+aheads: 1
+awin: 5
+aconv-chans: 10
+aconv-filts: 100
+## joint network related
+joint-dim: 300

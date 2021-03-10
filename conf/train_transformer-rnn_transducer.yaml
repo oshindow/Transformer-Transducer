@@ -1,0 +1,34 @@
+# minibatch related
+batch-size: 30
+
+sortagrad: 0
+opt: adadelta
+epochs: 30
+patience: 0
+accum-grad: 4
+grad-clip: 5.0
+
+# network architecture
+## encoder related
+etype: transformer
+transformer-enc-input-layer: vgg2l
+enc-block-arch:
+        - type: transformer
+          d_hidden: 320
+          d_ff: 320
+          heads: 4
+          att-dropout-rate: 0.4
+enc-block-repeat: 8
+## decoder related
+dtype: lstm
+dlayers: 1
+dec-embed-dim: 512
+dunits: 512
+dropout-rate-decoder: 0.2
+dropout-rate-embed-decoder: 0.1
+## joint network related
+joint-dim: 128
+
+# transducer related
+rnnt-mode: 'rnnt' # switch to 'rnnt-att' to use transducer with attention
+model-module: "espnet.nets.pytorch_backend.e2e_asr_transducer:E2E"
