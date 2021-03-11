@@ -18,7 +18,7 @@ Only streaming Transducer model from ESPnet is included here. Currently support
 | | Transformer | Transformer|
 ||Conformer|
 
-# Implementation includes the following papers
+# Implementation includes papers
 * **[RNN-T 2012]** Graves Alex, "Sequence Transduction with Recurrent Neural Networks", 2012. 
 * **[RNN-T 2013]** Graves Alex, et al., "Speech Recognition with Deep Recurrent Neural Networks", *ICASSP, IEEE International Conference on Acoustics, Speech and Signal Processing - Proceedings. 38. 10.1109/ICASSP.2013.6638947, 2013.*
 * **[T-T facebook]** C.-F. Yeh, et al., "Transformertransducer: End-to-end speech recognition with self-attention", 2019.
