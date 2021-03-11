@@ -56,7 +56,7 @@ ln -s <kaldi-root>/egs/wsj/s5/utils .
 ```
 6. Resume 
 
-If the training process is accidentally interrupted, you can resume training through resume by changing the resume variable in front of the run.sh script, e.g.,
+If the training process is accidentally interrupted, you can resume training by changing the resume variable in front of the run.sh script, e.g.,
 ```
 resume='exp/path/to/ckpt'
 ```
