@@ -46,12 +46,14 @@ ln -s <kaldi-root>/egs/wsj/s5/utils .
 ```
 ./run.sh 
 ```
-6. Resume
+6. Resume 
+
 If the training process is accidentally interrupted, you can resume training through resume by changing the resume variable in front of the run.sh script, e.g.,
 ```
 resume='exp/path/to/ckpt'
 ```
-7. Data pre-process
+7. Data pre-process 
+
 The scripts of English corpus `Timit`and Mandrian corpus `Aishell-1` are already in the local directory.
 
 # Thanks to
