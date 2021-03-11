@@ -61,14 +61,14 @@ if [ ${stage} -le 1 ] && [ ${stop_stage} -ge 1 ]; then
     echo "stage 1: Feature Generation"
     fbankdir=fbank
     # Generate the fbank features; by default 80-dimensional fbanks with pitch on each frame
-    #for x in test train dev; do
-    #    steps/make_fbank.sh --cmd "$train_cmd" --nj 4 data/${x} exp/make_fbank/${x} ${fbankdir}
-    #done
+    for x in test train dev; do
+        steps/make_fbank.sh --cmd "$train_cmd" --nj 4 data/${x} exp/make_fbank/${x} ${fbankdir}
+    done
 
     # make a dev set
     # Move train and dev folders (kaldi style naming) to train_nodev and train_dev
-    #mv data/dev data/${train_dev}
-    #mv data/train data/${train_set}
+    mv data/dev data/${train_dev}
+    mv data/train data/${train_set}
 
     # compute global CMVN
     compute-cmvn-stats scp:data/${train_set}/feats.scp data/${train_set}/cmvn.ark
@@ -150,9 +150,7 @@ if [ ${stage} -le 4 ] && [ ${stop_stage} -ge 4 ]; then
             # split data
             splitjson.py --parts ${nj} ${feat_recog_dir}/data.json
 
-            #### use CPU for decoding
-            ngpu=0
-
+            #### use CPU for decoding         
             ${decode_cmd} JOB=1:${nj} ${expdir}/${decode_dir}/log/decode.JOB.log \
             asr_recog.py \
             --train_config ${train_config} \
