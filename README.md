@@ -60,11 +60,11 @@ The scripts of English corpus `Timit` and Mandarin corpus `Aishell-1` are alread
 * [ESPnet](https://github.com/espnet/espnet)  
 * [wrap rnnt](https://github.com/HawkAaron/warp-ennt)   
 # Including inplementent of papers
-* Graves, Alex. (2012). Sequence Transduction with Recurrent Neural Networks.
-* Graves, Alex & Mohamed, Abdel-rahman & Hinton, Geoffrey. (2013). Speech Recognition with Deep Recurrent Neural Networks. ICASSP, IEEE International Conference on Acoustics, Speech and Signal Processing - Proceedings. 38. 10.1109/ICASSP.2013.6638947.
-* C.-F. Yeh, J. Mahadeokar, K. Kalgaonkar, Y. Wang, D. Le, M. Jain, K. Schubert, C. Fuegen, and M. L. Seltzer, “Transformertransducer: End-to-end speech recognition with self-attention,” 2019.
-* Q. Zhang, H. Lu, H. Sak, A. Tripathi, E. McDermott, S. Koo, and S. Kumar, “Transformer transducer: A streamable speech recognition model with transformer encoders and rnn-t loss,” ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), May 2020.
-* Gulati, Anmol, et al. “Conformer: Convolution-Augmented Transformer for Speech Recognition.” Interspeech 2020, 2020, pp. 5036–5040.
+* [RNN-T 2012] Graves Alex, "Sequence Transduction with Recurrent Neural Networks", 2012. 
+* [RNN-T 2013] Graves Alex, Mohamed Abdel-rahman, Hinton Geoffrey, "Speech Recognition with Deep Recurrent Neural Networks", ICASSP, IEEE International Conference on Acoustics, Speech and Signal Processing - Proceedings. 38. 10.1109/ICASSP.2013.6638947, 2013.
+* [T-T facebook] C.-F. Yeh, J. Mahadeokar, K. Kalgaonkar, Y. Wang, D. Le, M. Jain, K. Schubert, C. Fuegen, and M. L. Seltzer, "Transformertransducer: End-to-end speech recognition with self-attention", 2019.
+* [T-T google] Q. Zhang, H. Lu, H. Sak, A. Tripathi, E. McDermott, S. Koo, and S. Kumar, "Transformer transducer: A streamable speech recognition model with transformer encoders and rnn-t loss", ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), May 2020.
+* [conformer] Gulati Anmol, et al, "Conformer: Convolution-Augmented Transformer for Speech Recognition", Interspeech 2020, 2020, pp. 5036–5040.
 # Contact me 
 Email: xintongwang@bjfu.edu.cn
 
