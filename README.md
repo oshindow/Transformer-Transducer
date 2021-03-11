@@ -54,7 +54,7 @@ resume='exp/path/to/ckpt'
 ```
 7. Data pre-process 
 
-The scripts of English corpus `Timit`and Mandrian corpus `Aishell-1` are already in the local directory.
+The scripts of English corpus `Timit` and Mandarin corpus `Aishell-1` are already in the local directory.
 
 # Thanks to
 * [ESPnet](https://github.com/espnet/espnet)  
