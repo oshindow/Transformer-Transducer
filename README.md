@@ -23,7 +23,7 @@ Only streaming Transducer model from ESPnet is included here. Currently support
 * **[RNN-T 2013]** Graves Alex, et al., "Speech Recognition with Deep Recurrent Neural Networks", *ICASSP, IEEE International Conference on Acoustics, Speech and Signal Processing - Proceedings. 38. 10.1109/ICASSP.2013.6638947, 2013.*
 * **[T-T facebook]** C.-F. Yeh, et al., "Transformertransducer: End-to-end speech recognition with self-attention", 2019.
 * **[T-T google]** Q. Zhang, et al., "Transformer transducer: A streamable speech recognition model with transformer encoders and rnn-t loss", *ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), May 2020.*
-* **[conformer]** Gulati Anmol, et al, "Conformer: Convolution-Augmented Transformer for Speech Recognition", *Interspeech 2020, 2020, pp. 5036–5040.*
+* **[Conformer-T]** Gulati Anmol, et al, "Conformer: Convolution-Augmented Transformer for Speech Recognition", *Interspeech 2020, 2020, pp. 5036–5040.*
 
 # Environment
 * [kaldi](https://github.com/kaldi-asr/kaldi)  
